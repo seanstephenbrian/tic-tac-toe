@@ -44,39 +44,35 @@ const Player = (name, marker) => {
 // Gameplay module:
 const Gameplay = (function () {
 
-    let i = 1;
-
-    let playerOne;
-    let playerTwo;
+    let playerOne = Player('','');
+    let playerTwo = Player('','');
+    let currentPlayer = '';
+    let round = 1;
 
     function startGame() {
 
         Gameboard.emptyBoard();
 
+        round = 1;
+
         //the prompts will be replaced later with a pop-up window asking the user to enter their name and click to choose their marker.
-        const playerOneName = prompt('name?','');
-        const playerOneMarker = prompt('X or O?');
-        playerOne = Player(playerOneName, playerOneMarker);
+        playerOne.name = prompt('name?','');
+        playerOne.marker = prompt('X or O?','');
 
-        const playerTwoName = prompt('name?','');
-        const playerTwoMarker = prompt('X or O?');
-        playerTwo = Player(playerTwoName, playerTwoMarker);
+        playerTwo.name = prompt('name?','');
+        playerTwo.marker = prompt('X or O?','');
 
-        return {
-            playerOne,
-            playerTwo
-        };
     }
 
     function checkCurrentPlayer() {
-        if (i % 2 !== 0) {
-            let currentPlayer = playerOne.marker;
-            return currentPlayer;
-        } if (i % 2 === 0) {
-            let currentPlayer = playerTwo.marker;
-            return currentPlayer;
+        if (round %2 !== 0) {
+            currentPlayer = playerOne.marker;
+            console.log(`current player: ${currentPlayer}`);
+        } else if (round %2 === 0) {
+            currentPlayer = playerTwo.marker;
+            console.log(`current player: ${currentPlayer}`);
         }
-        console.log(currentPlayer);
+        round++;
     }
 
     return {
@@ -87,7 +83,7 @@ const Gameplay = (function () {
 })();
 
 
-Gameplay.checkCurrentPlayer();
+// Gameplay.checkCurrentPlayer();
 
 
 
@@ -99,3 +95,6 @@ Gameplay.checkCurrentPlayer();
 
 
 Gameplay.startGame();
+
+Gameplay.checkCurrentPlayer();
+
