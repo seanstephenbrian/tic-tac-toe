@@ -125,8 +125,9 @@ const Gameplay = (function () {
             const winner = Gameboard.checkForWinner();
             if (winner) {
                 alert(`winner is ${winner}`);
+            } else if (!winner) {
+                updateCurrentPlayer();
             }
-            updateCurrentPlayer();
         }
     }
 
@@ -137,16 +138,6 @@ const Gameplay = (function () {
     }
 
 })();
-
-
-// Gameplay.checkCurrentPlayer();
-
-
-
-
-
-
-
 
 Gameboard.addClickListeners();
 
