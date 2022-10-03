@@ -105,14 +105,14 @@ const Gameplay = (function () {
     }
 
     function updateCurrentPlayer() {
+        document.body.classList.remove(`${currentPlayer}-bg`);
         round++;
         if (round %2 !== 0) {
             currentPlayer = playerOne.marker;
-            console.log(`current player: ${currentPlayer}`);
         } else if (round %2 === 0) {
             currentPlayer = playerTwo.marker;
-            console.log(`current player: ${currentPlayer}`);
         }
+        document.body.classList.add(`${currentPlayer}-bg`);
     }
 
     function markSquare(e) {
@@ -125,6 +125,7 @@ const Gameplay = (function () {
             const winner = Gameboard.checkForWinner();
             if (winner) {
                 alert(`winner is ${winner}`);
+                Gameplay.startGame();
             } else if (!winner) {
                 updateCurrentPlayer();
             }

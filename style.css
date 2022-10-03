@@ -21,7 +21,6 @@ time, mark, audio, video {
 
 :root {
     --rvv: calc(1rem + 1vh + 1vw);
-    --green: #20C20E;
 }
 
 html, body {
@@ -30,8 +29,6 @@ html, body {
 }
 
 body {
-    background-color: #05071e;
-    color: var(--green);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -39,11 +36,26 @@ body {
     font-family: 'Courier New', Courier, monospace;
 }
 
+.x-bg {
+    background-image: url('img/svg/x.svg');
+    background-size: 1000px 1000px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.o-bg {
+    background-image: url('img/svg/o.svg');
+    background-size: 750px 750px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 header {
     margin-bottom: auto;
 }
 
 .gameboard {
+    z-index: 1;
     width: 500px;
     height: 500px;
     display: grid;
@@ -53,12 +65,14 @@ header {
         "a1 a2 a3"
         "b1 b2 b3"
         "c1 c2 c3";
-    border: 1px solid var(--green);
+    border: 1px solid red;
 }
 
 .square {
+    backdrop-filter: blur(15px);
+    color: #20C20E;
     font-size: var(--rvv);
-    border: 1px solid var(--green);
+    border: 1px solid red;
     display: flex;
     justify-content: center;
     align-items: center;
