@@ -53,7 +53,7 @@ const Gameplay = (function () {
 
         Gameboard.emptyBoard();
 
-        round = 1;
+        round = 0;
 
         //the prompts will be replaced later with a pop-up window asking the user to enter their name and click to choose their marker.
         playerOne.name = prompt('name?','');
@@ -61,10 +61,10 @@ const Gameplay = (function () {
 
         playerTwo.name = prompt('name?','');
         playerTwo.marker = prompt('X or O?','');
-
     }
 
     function checkCurrentPlayer() {
+        round++;
         if (round %2 !== 0) {
             currentPlayer = playerOne.marker;
             console.log(`current player: ${currentPlayer}`);
@@ -72,7 +72,6 @@ const Gameplay = (function () {
             currentPlayer = playerTwo.marker;
             console.log(`current player: ${currentPlayer}`);
         }
-        round++;
     }
 
     return {
