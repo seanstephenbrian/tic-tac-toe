@@ -1,15 +1,16 @@
+// Gameboard module:
 const Gameboard = (function () {
 
     let currentBoard = {
-        a1: 'x',
-        a2: 'x',
-        a3: 'x',
-        b1: 'o',
-        b2: 'o',
-        b3: 'o',
-        c1: 'x',
-        c2: 'x',
-        c3: 'x'
+        a1: '',
+        a2: '',
+        a3: '',
+        b1: '',
+        b2: '',
+        b3: '',
+        c1: '',
+        c2: '',
+        c3: ''
     };
 
     function renderBoard() {
@@ -19,20 +20,55 @@ const Gameboard = (function () {
         }
     }
 
+    function emptyBoard() {
+        for (square in currentBoard) {
+            currentBoard[square] = '';
+        }
+        renderBoard();
+    }
+
     return {
         currentBoard,
-        renderBoard
+        renderBoard,
+        emptyBoard
     };
 
 })();
 
 
-
+// factory function to create new Player objects:
 const Player = (name, marker) => {
     return { name, marker };
 };
 
-// const player1 = Player('Sean', 'x');
-// const player2 = Player('Hannah', 'o');
+// Gameplay module:
+const Gameplay = (function () {
 
-Gameboard.renderBoard();
+    function startGame() {
+        Gameboard.emptyBoard();
+
+        //the prompts will be replaced later with a pop-up window asking the user to enter their name and click to choose their marker.
+        const playerOneName = prompt('name?','');
+        const playerOneMarker = prompt('X or O?');
+        const playerOne = Player(playerOneName, playerOneMarker);
+
+        const playerTwoName = prompt('name?','');
+        const playerTwoMarker = prompt('X or O?');
+        const playerTwo = Player(playerTwoName, playerTwoMarker);
+    }
+
+    return {
+        startGame,
+    }
+
+})();
+
+
+
+
+
+
+
+
+
+Gameplay.startGame();

@@ -21,6 +21,7 @@ time, mark, audio, video {
 
 :root {
     --rvv: calc(1rem + 1vh + 1vw);
+    --green: #20C20E;
 }
 
 html, body {
@@ -29,11 +30,13 @@ html, body {
 }
 
 body {
+    background-color: #05071e;
+    color: var(--green);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    font-family: Helvetica;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 header {
@@ -50,12 +53,12 @@ header {
         "a1 a2 a3"
         "b1 b2 b3"
         "c1 c2 c3";
-    border: 1px solid black;
+    border: 1px solid var(--green);
 }
 
 .square {
     font-size: var(--rvv);
-    border: 1px solid black;
+    border: 1px solid var(--green);
     display: flex;
     justify-content: center;
     align-items: center;
