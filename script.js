@@ -17,7 +17,13 @@ const Gameboard = (function () {
         for (square in currentBoard) {
             let squareDiv = document.querySelector(`.${square}`);
             squareDiv.textContent = `${currentBoard[square]}`;
+            squareDiv.dataset.id = `${square}`;
         }
+    }
+
+    function updateBoard(square, marker) {
+        currentBoard[square] = marker;
+        renderBoard();
     }
 
     function emptyBoard() {
@@ -36,11 +42,32 @@ const Gameboard = (function () {
         });
     }
 
+    function checkForWinner() {
+        if ((currentBoard.a1) && (currentBoard.a1 === currentBoard.a2) && (currentBoard.a2 === currentBoard.a3)) {
+            return currentBoard.a1;
+        } else if ((currentBoard.b1) && (currentBoard.b1 === currentBoard.b2) && (currentBoard.b2 === currentBoard.b3)) {
+            return currentBoard.b1;
+        } else if ((currentBoard.c1) && (currentBoard.c1 === currentBoard.c2) && (currentBoard.c2 === currentBoard.c3)) {
+            return currentBoard.c1;
+        } else if ((currentBoard.a1) && (currentBoard.a1 === currentBoard.b1) && (currentBoard.b1 === currentBoard.c1)) {
+            return currentBoard.a1;
+        } else if ((currentBoard.a2) && (currentBoard.a2 === currentBoard.b2) && (currentBoard.b2 === currentBoard.c2)) {
+            return currentBoard.a2;
+        } else if ((currentBoard.a3) && (currentBoard.a3 === currentBoard.b3) && (currentBoard.b3 === currentBoard.c3)) {
+            return currentBoard.a3;
+        } else if ((currentBoard.a1) && (currentBoard.a1 === currentBoard.b2) && (currentBoard.b2 === currentBoard.c3)) {
+            return currentBoard.a1;
+        } else if ((currentBoard.a3) && (currentBoard.a3 === currentBoard.b2) && (currentBoard.b2 === currentBoard.c1)) {
+            return currentBoard.a3;
+        } 
+    }
+
     return {
-        currentBoard,
+        updateBoard,
         renderBoard,
         emptyBoard,
-        addClickListeners
+        addClickListeners,
+        checkForWinner
     };
 
 })();
@@ -57,7 +84,7 @@ const Gameplay = (function () {
     let playerOne = Player('','');
     let playerTwo = Player('','');
     let currentPlayer = '';
-    let round = 1;
+    let round;
 
     function startGame() {
 
@@ -66,11 +93,15 @@ const Gameplay = (function () {
         round = 0;
 
         //the prompts will be replaced later with a pop-up window asking the user to enter their name and click to choose their marker.
-        playerOne.name = prompt('name?','');
-        playerOne.marker = prompt('X or O?','');
+        // playerOne.name = prompt('name?','');
+        playerOne.name = 'sean';
+        // playerOne.marker = prompt('X or O?','');
+        playerOne.marker = 'x';
 
-        playerTwo.name = prompt('name?','');
-        playerTwo.marker = prompt('X or O?','');
+        // playerTwo.name = prompt('name?','');
+        playerTwo.name = 'hannah';
+        // playerTwo.marker = prompt('X or O?','');
+        playerTwo.marker = 'o';
     }
 
     function updateCurrentPlayer() {
@@ -89,7 +120,12 @@ const Gameplay = (function () {
         checkSquare: if (clickedSquare.innerText) {
             break checkSquare;
         } else if (!clickedSquare.innerText) {
-            clickedSquare.innerText = 'worked';
+            const squareId = clickedSquare.dataset.id;
+            Gameboard.updateBoard(squareId, currentPlayer);
+            const winner = Gameboard.checkForWinner();
+            if (winner) {
+                alert(`winner is ${winner}`);
+            }
             updateCurrentPlayer();
         }
     }
