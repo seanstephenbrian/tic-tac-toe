@@ -27,10 +27,20 @@ const Gameboard = (function () {
         renderBoard();
     }
 
+    function addClickListeners() {
+        let squares = document.querySelectorAll('.square');
+        squares.forEach(square => {
+            square.addEventListener('click', (e) => {
+                Gameplay.markSquare(e);
+            });
+        });
+    }
+
     return {
         currentBoard,
         renderBoard,
-        emptyBoard
+        emptyBoard,
+        addClickListeners
     };
 
 })();
@@ -63,7 +73,7 @@ const Gameplay = (function () {
         playerTwo.marker = prompt('X or O?','');
     }
 
-    function checkCurrentPlayer() {
+    function updateCurrentPlayer() {
         round++;
         if (round %2 !== 0) {
             currentPlayer = playerOne.marker;
@@ -74,9 +84,20 @@ const Gameplay = (function () {
         }
     }
 
+    function markSquare(e) {
+        const clickedSquare = e.target;
+        checkSquare: if (clickedSquare.innerText) {
+            break checkSquare;
+        } else if (!clickedSquare.innerText) {
+            clickedSquare.innerText = 'worked';
+            updateCurrentPlayer();
+        }
+    }
+
     return {
+        markSquare,
         startGame,
-        checkCurrentPlayer
+        updateCurrentPlayer
     }
 
 })();
@@ -91,9 +112,9 @@ const Gameplay = (function () {
 
 
 
-
+Gameboard.addClickListeners();
 
 Gameplay.startGame();
 
-Gameplay.checkCurrentPlayer();
+Gameplay.updateCurrentPlayer();
 
