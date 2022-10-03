@@ -44,24 +44,51 @@ const Player = (name, marker) => {
 // Gameplay module:
 const Gameplay = (function () {
 
+    let i = 1;
+
+    let playerOne;
+    let playerTwo;
+
     function startGame() {
+
         Gameboard.emptyBoard();
 
         //the prompts will be replaced later with a pop-up window asking the user to enter their name and click to choose their marker.
         const playerOneName = prompt('name?','');
         const playerOneMarker = prompt('X or O?');
-        const playerOne = Player(playerOneName, playerOneMarker);
+        playerOne = Player(playerOneName, playerOneMarker);
 
         const playerTwoName = prompt('name?','');
         const playerTwoMarker = prompt('X or O?');
-        const playerTwo = Player(playerTwoName, playerTwoMarker);
+        playerTwo = Player(playerTwoName, playerTwoMarker);
+
+        return {
+            playerOne,
+            playerTwo
+        };
+    }
+
+    function checkCurrentPlayer() {
+        if (i % 2 !== 0) {
+            let currentPlayer = playerOne.marker;
+            return currentPlayer;
+        } if (i % 2 === 0) {
+            let currentPlayer = playerTwo.marker;
+            return currentPlayer;
+        }
+        console.log(currentPlayer);
     }
 
     return {
         startGame,
+        checkCurrentPlayer
     }
 
 })();
+
+
+Gameplay.checkCurrentPlayer();
+
 
 
 
