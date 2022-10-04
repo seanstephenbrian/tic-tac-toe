@@ -24,6 +24,7 @@ time, mark, audio, video {
     --green: #20C20E;
     --pink: rgb(255, 66, 211);
     --angel-mode: brightness(5);
+    --form-margin: calc(.5*var(--rvv));
 }
 
 @font-face {
@@ -163,10 +164,32 @@ header {
 }
 
 .form-window form {
-    margin: calc(.3*var(--rvv));
+    height: calc(100px + 6*var(--rvv));
+    width: calc(100px + 6*var(--rvv));
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: calc(var(--rvv));
+}
+
+.player-label,
+legend {
+    font-size: 120%;
+}
+
+.player-one-field {
+    margin-top: var(--form-margin);
+}
+
+.player-one-field,
+fieldset,
+.player-two-field {
+    margin-left: var(--form-margin);
+    margin-right: var(--form-margin);
+}
+
+.play-button {
+    margin-bottom: var(--form-margin);
 }
 
 .form-window input[type='text'] {

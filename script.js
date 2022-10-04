@@ -221,7 +221,6 @@ const PageEffects = (function() {
                     playerTwoField.classList.remove('hide');
                 }
             });
-
         });
    
     }
