@@ -12,10 +12,10 @@
 
     <header>tic-tac-toe</header>
 
-    <div class="click-to-start"><span class="clickable">click here to start a game</span></div>
+    <div class="click-to-start"><span class="clickable">click to start a game</span></div>
 
     <div class="form-window hide">
-        <form action="" method="post">
+        <form action="" method="post" id="player-form">
             <label for="player-one">player one name:</label>
             <input type="text" id="player-one" name="player-one" maxlength="16" placeholder="e.g. shane" required>
             <fieldset>
@@ -27,6 +27,7 @@
             </fieldset>
             <label for="player-two" class="player-two-input">player two name:</label>
             <input type="text" class="player-two-input" id="player-two" name="player-two" maxlength="16" placeholder="e.g. shane" required>
+            <button type="submit" form="player-form">play game</button>
         </form>
     </div>
 
