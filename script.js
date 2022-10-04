@@ -131,6 +131,7 @@ const Gameplay = (function () {
             Gameboard.updateBoard(squareId, currentPlayer);
             const winner = Gameboard.checkForWinner();
             if (winner) {
+                alert(`${winner} is winner!`);
                 Gameplay.startGame();
                 Gameplay.updateCurrentPlayer();
             } else if (!winner) {
@@ -222,7 +223,10 @@ const PageEffects = (function() {
                 }
             });
         });
-   
+        const closeButton = document.querySelector('.close-button');
+        closeButton.addEventListener('click', () => {
+            hidePlayerForm();
+        });
     }
 
     function clickedPlay(e) {

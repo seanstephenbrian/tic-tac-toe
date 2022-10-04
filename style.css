@@ -25,6 +25,7 @@ time, mark, audio, video {
     --pink: rgb(255, 66, 211);
     --angel-mode: brightness(5);
     --form-margin: calc(.5*var(--rvv));
+    --form-height: calc(100px + 6*var(--rvv));
 }
 
 @font-face {
@@ -79,6 +80,12 @@ body {
         text-shadow: 1px 1px red;
     }
 
+    .close-button:hover {
+        color: white;
+        background-color: black;
+        border: 1px solid red;
+    }
+    
     .form-window button:hover {
         font-style: italic;
         border: 2px solid var(--green);
@@ -156,16 +163,27 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: calc(100px + 6*var(--rvv));
-    width: calc(100px + 6*var(--rvv));
+    height: var(--form-height);
+    width: var(--form-height);
     z-index: 10;
     background: white;
     border: 3px solid var(--green)
 }
 
+.close-button {
+    position: absolute;
+    right: calc(.4*var(--rvv));
+    top: calc(.4*var(--rvv));
+    font-size: 140%;
+    border: 1px solid black;
+    padding: calc(.1*var(--rvv));
+    border-radius: 50%;
+    cursor: pointer;
+}
+
 .form-window form {
-    height: calc(100px + 6*var(--rvv));
-    width: calc(100px + 6*var(--rvv));
+    height: var(--form-height);
+    width: var(--form-height);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
