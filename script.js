@@ -91,6 +91,7 @@ const Gameplay = (function () {
         Gameboard.emptyBoard();
 
         round = 0;
+        alert(`round: ${round}`);
 
         //the prompts will be replaced later with a pop-up window asking the user to enter their name and click to choose their marker.
         // playerOne.name = prompt('name?','');
@@ -102,6 +103,7 @@ const Gameplay = (function () {
         playerTwo.name = 'hannah';
         // playerTwo.marker = prompt('X or O?','');
         playerTwo.marker = 'o';
+
     }
 
     function updateCurrentPlayer() {
@@ -124,8 +126,8 @@ const Gameplay = (function () {
             Gameboard.updateBoard(squareId, currentPlayer);
             const winner = Gameboard.checkForWinner();
             if (winner) {
-                alert(`winner is ${winner}`);
                 Gameplay.startGame();
+                Gameplay.updateCurrentPlayer();
             } else if (!winner) {
                 updateCurrentPlayer();
             }
