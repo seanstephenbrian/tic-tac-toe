@@ -12,6 +12,26 @@
 
     <header>tic-tac-toe</header>
 
+    <div class="click-to-start"><span class="clickable">click here to start a game</span></div>
+
+    <div class="form-window hide">
+        <form action="" method="post">
+            <label for="player-one">player one name:</label>
+            <input type="text" id="player-one" name="player-one" maxlength="16" placeholder="e.g. shane" required>
+            <fieldset>
+                <legend>player two:</legend>
+                <input type="radio" id="human" name="player-two-type" value="human" checked required>
+                <label for="human">human</label>
+                <input type="radio" id="computer" name="player-two-type" value="computer" required>
+                <label for="computer">computer</label>
+            </fieldset>
+            <label for="player-two" class="player-two-input">player two name:</label>
+            <input type="text" class="player-two-input" id="player-two" name="player-two" maxlength="16" placeholder="e.g. shane" required>
+        </form>
+    </div>
+
+    <div class="overlay hide"></div>
+
     <div class="gameboard">
         <div class="square a1"></div>
         <div class="square a2"></div>

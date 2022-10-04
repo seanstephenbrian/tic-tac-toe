@@ -23,6 +23,7 @@ time, mark, audio, video {
     --rvv: calc(1rem + 1vh + 1vw);
     --green: #20C20E;
     --pink: rgb(255, 66, 211);
+    --angel-mode: brightness(5);
 }
 
 @font-face {
@@ -44,14 +45,18 @@ body {
 }
 
 @media only screen and (max-width: 750px) {
-    .gameboard {
+
+    .gameboard,
+    .click-to-start {
         width: 66vw;
         height: 66vw;
     }
 }
 
 @media only screen and (min-width: 751px) {
-    .gameboard {
+
+    .gameboard,
+    .click-to-start {
         width: 500px;
         height: 500px;
     }
@@ -64,20 +69,26 @@ body {
         text-shadow: 3px 3px var(--green);
     }
 
+    .clickable:hover {
+        border: 1px solid var(--green);
+        background: rgba(255, 255, 255, 0.761);
+        color: red;
+    }
+
     .square {
         transition: .2s;
     }
 
     .square:hover {
         border: 3px solid var(--green);
-        z-index: 5;
+        z-index: 3;
         font-family: 'Helico';
         font-size: calc(2*var(--rvv));
-        color: var(--pink);
+        filter: invert(1);
         text-shadow: 3px 3px var(--green);
     }
 }
- 
+
 
 .x-bg {
     background-image: url('img/svg/x.svg');
@@ -100,6 +111,71 @@ header {
     font-size: calc(.8*var(--rvv));
 }
 
+.click-to-start {
+    padding: calc(var(--rvv));
+    backdrop-filter: var(--angel-mode);
+    border: 2px solid rgb(0, 225, 0);
+    z-index: 9;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.clickable {
+    color: white;
+    background: rgb(32,194,14);
+    background: linear-gradient(90deg, rgba(32,194,14,1) 22%, rgba(255,66,211,1) 49%, rgba(255,0,0,1) 82%);
+    border-radius: calc(var(--rvv));
+    padding: calc(0.3*var(--rvv));
+    border: 1px solid red;
+    cursor: pointer;
+    font-size: calc(.5*var(--rvv));
+}
+
+.form-window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: calc(100px + 4*var(--rvv));
+    width: calc(100px + 6*var(--rvv));
+    z-index: 10;
+    background: white;
+    border: 4px solid var(--green);
+}
+
+.form-window form {
+    margin: calc(.3*var(--rvv));
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--rvv));
+}
+
+.form-window input[type='text'] {
+    margin-top: calc(-1*var(--rvv));
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+.overlay {
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(8px);
+}
+
+.hide {
+    display: none;
+}
+
 .gameboard {
     z-index: 1;
     position: fixed;
@@ -119,13 +195,20 @@ header {
 .square {
     cursor: pointer;
     backdrop-filter: blur(15px);
-    color: var(--green);
     font-size: calc(1.5*var(--rvv));
     border: 2px solid red;
     display: flex;
     justify-content: center;
     align-items: center;
     text-shadow: 0 0 10px var(--pink);
+}
+
+[data-symbol='x'] {
+    color: var(--green);
+}
+
+[data-symbol='o'] {
+    color: red;
 }
 
 .a1 {

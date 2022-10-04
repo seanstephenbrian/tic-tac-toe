@@ -16,7 +16,11 @@ const Gameboard = (function () {
     function renderBoard() {
         for (square in currentBoard) {
             let squareDiv = document.querySelector(`.${square}`);
+            let marker = `${currentBoard[square]}`;
             squareDiv.textContent = `${currentBoard[square]}`;
+            if (marker) {
+                squareDiv.dataset.symbol = marker;
+            }
             squareDiv.dataset.id = `${square}`;
         }
     }
@@ -28,6 +32,8 @@ const Gameboard = (function () {
 
     function emptyBoard() {
         for (square in currentBoard) {
+            let squareDiv = document.querySelector(`.${square}`);
+            squareDiv.removeAttribute('data-symbol');
             currentBoard[square] = '';
         }
         renderBoard();
@@ -125,7 +131,6 @@ const Gameplay = (function () {
             Gameboard.updateBoard(squareId, currentPlayer);
             const winner = Gameboard.checkForWinner();
             if (winner) {
-                alert(`winner is ${winner}!`);
                 Gameplay.startGame();
                 Gameplay.updateCurrentPlayer();
             } else if (!winner) {
@@ -138,17 +143,12 @@ const Gameplay = (function () {
         markSquare,
         startGame,
         updateCurrentPlayer
-    }
+        }
 
 })();
 
-Gameboard.addClickListeners();
 
-Gameplay.startGame();
-
-Gameplay.updateCurrentPlayer();
-
-// module for dynamic page effects:
+//  module for dynamic page effects:
 const PageEffects = (function() {
 
     function addHeaderLink() {
@@ -178,14 +178,38 @@ const PageEffects = (function() {
         }
     }
 
+    function addClickableListener() {
+        const clickable = document.querySelector('.clickable');
+        clickable.addEventListener('click', () => {
+            showPlayerForm();
+        });
+    }
+
+    function showPlayerForm() {
+        const playerForm = document.querySelector('.form-window');
+        playerForm.classList.remove('hide');
+        const overlay = document.querySelector('.overlay');
+        overlay.classList.remove('hide');
+    }
+    
     return {
         addHeaderLink,
         addSquareListeners,
-        rotateSquare
+        rotateSquare,
+        showPlayerForm,
+        addClickableListener
     }
     
 })();
 
+Gameboard.addClickListeners();
+
+Gameplay.startGame();
+
+Gameplay.updateCurrentPlayer();
+
 PageEffects.addHeaderLink();
+
+PageEffects.addClickableListener();
 
 PageEffects.addSquareListeners();
