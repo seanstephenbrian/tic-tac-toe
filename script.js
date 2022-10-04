@@ -92,21 +92,16 @@ const Gameplay = (function () {
     let currentPlayer = '';
     let round;
 
-    function startGame() {
+    function startGame(playerOneName, playerTwoName) {
 
         Gameboard.emptyBoard();
 
         round = 0;
 
-        //the prompts will be replaced later with a pop-up window asking the user to enter their name and click to choose their marker.
-        // playerOne.name = prompt('name?','');
-        playerOne.name = 'sean';
-        // playerOne.marker = prompt('X or O?','');
+        playerOne.name = playerOneName;
         playerOne.marker = 'x';
-
-        // playerTwo.name = prompt('name?','');
-        playerTwo.name = 'hannah';
-        // playerTwo.marker = prompt('X or O?','');
+        
+        playerTwo.name = playerTwoName;
         playerTwo.marker = 'o';
 
     }
@@ -234,6 +229,16 @@ const PageEffects = (function() {
         PageEffects.addSquareListeners();
         PageEffects.hidePlayerForm();
         PageEffects.hideStartDiv();
+
+        const playerOne = document.querySelector('#player-one').value;
+        const computerOption = document.querySelector('#computer');
+        if (computerOption.checked) {
+            const playerTwo = 'computer';
+            Gameplay.startGame(playerOne, playerTwo);
+        } else if (!computerOption.checked) {
+            const playerTwo = document.querySelector('#player-two').value;
+            Gameplay.startGame(playerOne, playerTwo);
+        }
     }
     
     return {

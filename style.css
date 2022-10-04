@@ -88,7 +88,7 @@ body {
     
     .form-window button:hover {
         font-style: italic;
-        border: 2px solid var(--green);
+        border: 2px solid red;
         background: rgba(0, 0, 0, 0.712);
         color: #FFFF9E;
         text-shadow: 1px 1px red;
@@ -166,7 +166,8 @@ header {
     height: var(--form-height);
     width: var(--form-height);
     z-index: 10;
-    background: white;
+    background: black;
+    color: var(--green);
     border: 3px solid var(--green)
 }
 
@@ -213,6 +214,7 @@ fieldset,
 .form-window input[type='text'] {
     margin-top: calc(-1*var(--rvv));
     font-family: 'Courier New', Courier, monospace;
+    border: 1px solid red;
 }
 
 .form-window button {
@@ -224,7 +226,7 @@ fieldset,
     background: linear-gradient(90deg, rgba(255,0,0,1) 22%, rgba(255,66,211,1) 49%, rgba(32,194,14,1) 82%);
     border-radius: calc(var(--rvv));
     padding: calc(0.4*var(--rvv)) calc(0.3*var(--rvv)) calc(0.3*var(--rvv));
-    border: 1px solid red;
+    border: 1px solid var(--green);
     cursor: pointer;
     font-size: calc(.5*var(--rvv));
 }
