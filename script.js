@@ -204,15 +204,29 @@ const PageEffects = (function() {
         startDiv.classList.add('hide');
     }
 
-    function addFormListener() {
+    function addFormListeners() {
         const playerForm = document.querySelector('#player-form');
         playerForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            clickedPlay();
+            clickedPlay(e);
         });
+        const radioInputs = document.querySelectorAll(`input[type='radio']`);
+        radioInputs.forEach(option => {
+            option.addEventListener('click', () => {
+                const computerOption = document.querySelector('#computer');
+                const playerTwoField = document.querySelector('.player-two-field');
+                if (computerOption.checked) {
+                    playerTwoField.classList.add('hide');
+                } else if (!computerOption.checked) {
+                    playerTwoField.classList.remove('hide');
+                }
+            });
+
+        });
+   
     }
 
-    function clickedPlay() {
+    function clickedPlay(e) {
         Gameboard.addClickListeners();
         PageEffects.addSquareListeners();
         PageEffects.hidePlayerForm();
@@ -227,7 +241,7 @@ const PageEffects = (function() {
         hidePlayerForm,
         addClickableListener,
         hideStartDiv,
-        addFormListener
+        addFormListeners
     }
     
 })();
@@ -236,4 +250,4 @@ Gameplay.startGame();
 Gameplay.updateCurrentPlayer();
 PageEffects.addHeaderLink();
 PageEffects.addClickableListener();
-PageEffects.addFormListener();
+PageEffects.addFormListeners();

@@ -16,8 +16,10 @@
 
     <div class="form-window hide">
         <form action="" method="post" id="player-form">
-            <label for="player-one">player one name:</label>
-            <input type="text" id="player-one" name="player-one" maxlength="16" placeholder="e.g. shane" required>
+            <div class="player-one-field">
+                <label for="player-one">player one name:</label>
+                <input type="text" id="player-one" name="player-one" maxlength="16" placeholder="e.g. shane" required>
+            </div>
             <fieldset>
                 <legend>player two:</legend>
                 <input type="radio" id="human" name="player-two-type" value="human" checked required>
@@ -25,8 +27,10 @@
                 <input type="radio" id="computer" name="player-two-type" value="computer" required>
                 <label for="computer">computer</label>
             </fieldset>
-            <label for="player-two" class="player-two-input">player two name:</label>
-            <input type="text" class="player-two-input" id="player-two" name="player-two" maxlength="16" placeholder="e.g. shane" required>
+            <div class="player-two-field">
+                <label for="player-two" class="player-two-input">player two name:</label>
+                <input type="text" class="player-two-input" id="player-two" name="player-two" maxlength="16" placeholder="e.g. shane" required>
+            </div>
             <button class="play-button" type="submit" form="player-form">play game</button>
         </form>
     </div>
