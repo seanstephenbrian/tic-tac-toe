@@ -91,7 +91,6 @@ const Gameplay = (function () {
         Gameboard.emptyBoard();
 
         round = 0;
-        alert(`round: ${round}`);
 
         //the prompts will be replaced later with a pop-up window asking the user to enter their name and click to choose their marker.
         // playerOne.name = prompt('name?','');
@@ -126,6 +125,7 @@ const Gameplay = (function () {
             Gameboard.updateBoard(squareId, currentPlayer);
             const winner = Gameboard.checkForWinner();
             if (winner) {
+                alert(`winner is ${winner}!`);
                 Gameplay.startGame();
                 Gameplay.updateCurrentPlayer();
             } else if (!winner) {
@@ -148,3 +148,44 @@ Gameplay.startGame();
 
 Gameplay.updateCurrentPlayer();
 
+// module for dynamic page effects:
+const PageEffects = (function() {
+
+    function addHeaderLink() {
+        const header = document.querySelector('header');
+        header.addEventListener('click', () => {
+            window.open('https://www.wikihow.com/Play-Tic-Tac-Toe');
+        });
+    }
+
+    function addSquareListeners() {
+        const squares = document.querySelectorAll('.square');
+        squares.forEach(square => {
+            square.addEventListener('mouseover', (e) => {
+                PageEffects.rotateSquare(e);
+            });
+            square.addEventListener('mouseout', (e) => {
+                PageEffects.rotateSquare(e);
+            });
+        });
+    }
+
+    function rotateSquare(e) {
+        if (window.innerWidth >= 751) {
+            const square = e.target;
+            const num = (Math.round(Math.random()) * 2 - 1) * (Math.floor(Math.random() * 180));
+            square.style.transform = `rotate(${num}deg)`;
+        }
+    }
+
+    return {
+        addHeaderLink,
+        addSquareListeners,
+        rotateSquare
+    }
+    
+})();
+
+PageEffects.addHeaderLink();
+
+PageEffects.addSquareListeners();

@@ -1,0 +1,27 @@
+Helico Centrica is the illegitimate child of an encounter between a Blackletter font and a Geometric Sans Serif font.
+
+It is suitable for display and graphic designs but not for long pieces of text.  I would not publish a book formatted in Helico Centrica but it would be suitable for chapter titles.
+
+The font is released under the SIL Open Font License.
+
+There are many Open Type Features, such as -
+
+Capital Spacing
+Many Case sensitive forms
+Denominators
+Many discretionary ligatures adding connections between characters
+Fractions
+Diacritic marks and fancy tails correctly positioned by anchors
+Numerators
+Oldstyle numbers
+Ordinals
+Small Capitals
+Small Capitals from Capitals
+Stylistic Set 1 swaps some of the capitals for more conventional capitals and also changes the style of the 'g'.
+Stylistic Set 2 adds small flourishes to the Capitals and some of the lower case letters
+Stylistic Set 3 adds different flourishes to many lower case characters
+Stylistic Set 4 adds some different and more flamboyant flourishes to many lower case characters
+Stylistic Set 5 adds some curly flourishes to some lower case characters mainly for use at the end of sentences
+Stylistic Set 6 changes the zero into a dotted zero
+Stylistic Set 7 changes the upper case 'CDILM' and 'X' into Roman Numerals
+The Swash feature adds swashes to all upper case and some lower case characters
