@@ -280,10 +280,12 @@ fieldset,
 
 [data-symbol='x'] {
     color: var(--green);
+    border: 2px solid var(--green);
 }
 
 [data-symbol='o'] {
     color: red;
+    border: 2px solid red;
 }
 
 .a1 {

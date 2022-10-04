@@ -105,9 +105,15 @@ const Gameplay = (function () {
         playerTwo.marker = playerTwoMarker;
 
         currentPlayer = playerOne.marker;
+        const currentPlayerName = playerOne.name;
 
         document.body.classList.remove(`init-bg`);
         document.body.classList.add(`${currentPlayer}-bg`);
+
+        if (currentPlayerName) {
+            const header = document.querySelector('header');
+            header.innerText = `${currentPlayerName}'s turn`;
+        }
 
     }
 
@@ -119,14 +125,18 @@ const Gameplay = (function () {
         } else if (playerOne.marker || playerTwo.marker) {
             document.body.classList.remove(`x-bg`);
             document.body.classList.remove(`o-bg`);
-            document.body.classList.remove(`init-bg`);
             round++;
+            let currentPlayerName;
             if (round %2 !== 0) {
                 currentPlayer = playerOne.marker;
+                currentPlayerName = playerOne.name;
             } else if (round %2 === 0) {
                 currentPlayer = playerTwo.marker;
+                currentPlayerName = playerTwo.name;
             }
             document.body.classList.add(`${currentPlayer}-bg`);
+            const header = document.querySelector('header');
+            header.innerText = `${currentPlayerName}'s turn`;
         }
     }
 
