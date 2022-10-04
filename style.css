@@ -108,6 +108,12 @@ body {
     }
 }
 
+.init-bg {
+    background-image: url('img/svg/x.svg');
+    background-size: 133vw auto;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
 .x-bg {
     background-image: url('img/svg/x.svg');

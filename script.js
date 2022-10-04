@@ -92,32 +92,46 @@ const Gameplay = (function () {
     let currentPlayer = '';
     let round;
 
-    function startGame(playerOneName, playerTwoName) {
+    function startGame(playerOneName, playerOneMarker, playerTwoName, playerTwoMarker) {
 
         Gameboard.emptyBoard();
 
-        round = 0;
+        round = 1;
 
         playerOne.name = playerOneName;
-        playerOne.marker = 'x';
+        playerOne.marker = playerOneMarker;
         
         playerTwo.name = playerTwoName;
-        playerTwo.marker = 'o';
+        playerTwo.marker = playerTwoMarker;
+
+        currentPlayer = playerOne.marker;
+
+        document.body.classList.remove(`init-bg`);
+        document.body.classList.add(`${currentPlayer}-bg`);
 
     }
 
     function updateCurrentPlayer() {
-        document.body.classList.remove(`${currentPlayer}-bg`);
-        round++;
-        if (round %2 !== 0) {
-            currentPlayer = playerOne.marker;
-        } else if (round %2 === 0) {
-            currentPlayer = playerTwo.marker;
+        if (playerOne.marker === undefined || playerTwo.marker === undefined) {
+            document.body.classList.remove(`x-bg`);
+            document.body.classList.remove(`o-bg`);
+            document.body.classList.add(`init-bg`);
+        } else if (playerOne.marker || playerTwo.marker) {
+            document.body.classList.remove(`x-bg`);
+            document.body.classList.remove(`o-bg`);
+            document.body.classList.remove(`init-bg`);
+            round++;
+            if (round %2 !== 0) {
+                currentPlayer = playerOne.marker;
+            } else if (round %2 === 0) {
+                currentPlayer = playerTwo.marker;
+            }
+            document.body.classList.add(`${currentPlayer}-bg`);
         }
-        document.body.classList.add(`${currentPlayer}-bg`);
     }
 
     function markSquare(e) {
+
         const clickedSquare = e.target;
         checkSquare: if (clickedSquare.innerText) {
             break checkSquare;
@@ -213,6 +227,10 @@ const PageEffects = (function() {
                 const playerTwoField = document.querySelector('.player-two-field');
                 if (computerOption.checked) {
                     playerTwoField.classList.add('hide');
+                    const playerTwoInput = document.querySelector('.player-two-input');
+                    playerTwoInput.required = false;
+                    const playerTwoMarkerInput = document.querySelector('#player-two-marker');
+                    playerTwoMarkerInput.required = false;
                 } else if (!computerOption.checked) {
                     playerTwoField.classList.remove('hide');
                 }
@@ -225,20 +243,42 @@ const PageEffects = (function() {
     }
 
     function clickedPlay(e) {
+
         Gameboard.addClickListeners();
         PageEffects.addSquareListeners();
         PageEffects.hidePlayerForm();
         PageEffects.hideStartDiv();
 
         const playerOne = document.querySelector('#player-one').value;
+        const playerOneMarkerInput = document.querySelector('#player-one-marker').value;
+        let playerOneMarker;
+        if (playerOneMarkerInput === 'X' || playerOneMarkerInput === 'x') {
+            playerOneMarker = 'x';
+        } else if (playerOneMarkerInput === 'O' || playerOneMarkerInput === 'o') {
+            playerOneMarker = 'o';
+        }
         const computerOption = document.querySelector('#computer');
         if (computerOption.checked) {
             const playerTwo = 'computer';
-            Gameplay.startGame(playerOne, playerTwo);
+            let playerTwoMarker;
+            if (playerOneMarker === 'x') {
+                playerTwoMarker = 'o';
+            } else if (playerOneMarker === 'o') {
+                playerTwoMarker = 'x';
+            }
+            Gameplay.startGame(playerOne, playerOneMarker, playerTwo, playerTwoMarker);
         } else if (!computerOption.checked) {
             const playerTwo = document.querySelector('#player-two').value;
-            Gameplay.startGame(playerOne, playerTwo);
+            const playerTwoMarkerInput = document.querySelector('#player-two-marker').value;
+            let playerTwoMarker;
+            if (playerTwoMarkerInput === 'X' || playerTwoMarkerInput === 'x') {
+                playerTwoMarker = 'x';
+            } else if (playerTwoMarkerInput === 'O' || playerTwoMarkerInput === 'o') {
+                playerTwoMarker = 'o';
+            }
+            Gameplay.startGame(playerOne, playerOneMarker, playerTwo, playerTwoMarker);
         }
+
     }
     
     return {
