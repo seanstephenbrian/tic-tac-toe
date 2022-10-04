@@ -191,25 +191,49 @@ const PageEffects = (function() {
         const overlay = document.querySelector('.overlay');
         overlay.classList.remove('hide');
     }
+
+    function hidePlayerForm() {
+        const playerForm = document.querySelector('.form-window');
+        playerForm.classList.add('hide');
+        const overlay = document.querySelector('.overlay');
+        overlay.classList.add('hide');
+    }
+
+    function hideStartDiv() {
+        const startDiv = document.querySelector('.click-to-start');
+        startDiv.classList.add('hide');
+    }
+
+    function addFormListener() {
+        const playerForm = document.querySelector('#player-form');
+        playerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            clickedPlay();
+        });
+    }
+
+    function clickedPlay() {
+        Gameboard.addClickListeners();
+        PageEffects.addSquareListeners();
+        PageEffects.hidePlayerForm();
+        PageEffects.hideStartDiv();
+    }
     
     return {
         addHeaderLink,
         addSquareListeners,
         rotateSquare,
         showPlayerForm,
-        addClickableListener
+        hidePlayerForm,
+        addClickableListener,
+        hideStartDiv,
+        addFormListener
     }
     
 })();
 
-Gameboard.addClickListeners();
-
 Gameplay.startGame();
-
 Gameplay.updateCurrentPlayer();
-
 PageEffects.addHeaderLink();
-
 PageEffects.addClickableListener();
-
-PageEffects.addSquareListeners();
+PageEffects.addFormListener();
