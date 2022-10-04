@@ -290,6 +290,18 @@ const PageEffects = (function() {
         }
 
     }
+
+    function setBodyHeight() {
+        const windowHeight = window.innerHeight + "px";
+        document.body.style.minHeight = windowHeight;
+      }
+    
+    function addWindowResizeListener() {
+        addEventListener('resize', () => {
+            setBodyHeight();
+          });
+    }
+      
     
     return {
         addHeaderLink,
@@ -299,11 +311,15 @@ const PageEffects = (function() {
         hidePlayerForm,
         addClickableListener,
         hideStartDiv,
-        addFormListeners
+        addFormListeners,
+        setBodyHeight,
+        addWindowResizeListener
     }
     
 })();
 
+PageEffects.setBodyHeight();
+PageEffects.addWindowResizeListener();
 Gameplay.startGame();
 Gameplay.updateCurrentPlayer();
 PageEffects.addHeaderLink();
