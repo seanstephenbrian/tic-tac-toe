@@ -222,6 +222,7 @@ footer {
 }
 
 .tie {
+    font-size: calc(.6*var(--rvv));
     z-index: 30;
     position: fixed;
     top: 50%;
