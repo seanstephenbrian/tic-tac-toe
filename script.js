@@ -90,6 +90,7 @@ const Gameplay = (function () {
     let playerOne = Player('','');
     let playerTwo = Player('','');
     let currentPlayer = '';
+    let currentPlayerName = '';
     let round;
 
     function startGame(playerOneName, playerOneMarker, playerTwoName, playerTwoMarker) {
@@ -105,7 +106,7 @@ const Gameplay = (function () {
         playerTwo.marker = playerTwoMarker;
 
         currentPlayer = playerOne.marker;
-        const currentPlayerName = playerOne.name;
+        currentPlayerName = playerOne.name;
 
         if (currentPlayer) {
             document.body.classList.remove(`init-bg`);
@@ -119,6 +120,29 @@ const Gameplay = (function () {
 
     }
 
+    function playAgain() {
+        PageEffects.hideWinner();
+
+        if (currentPlayer === playerOne.marker) {
+            currentPlayer = playerTwo.marker;
+            currentPlayerName = playerTwo.name;
+        } else if (currentPlayer === playerTwo.marker) {
+            currentPlayer = playerOne.marker;
+            currentPlayerName = playerOne.name;
+        }
+
+        document.body.classList.remove(`x-bg`);
+        document.body.classList.remove(`o-bg`);
+        document.body.classList.add(`${currentPlayer}-bg`);
+
+        const header = document.querySelector('header');
+        header.innerText = `${currentPlayerName}'s turn`;
+
+        Gameboard.emptyBoard();
+
+        round = 1;
+    }
+
     function updateCurrentPlayer() {
         if (playerOne.marker === undefined || playerTwo.marker === undefined) {
             document.body.classList.remove(`x-bg`);
@@ -128,7 +152,6 @@ const Gameplay = (function () {
             document.body.classList.remove(`x-bg`);
             document.body.classList.remove(`o-bg`);
             round++;
-            let currentPlayerName;
             if (round %2 !== 0) {
                 currentPlayer = playerOne.marker;
                 currentPlayerName = playerOne.name;
@@ -152,9 +175,7 @@ const Gameplay = (function () {
             Gameboard.updateBoard(squareId, currentPlayer);
             const winner = Gameboard.checkForWinner();
             if (winner) {
-                alert(`${winner} is winner!`);
-                Gameplay.startGame();
-                Gameplay.updateCurrentPlayer();
+                PageEffects.showWinner(currentPlayerName);
             } else if (!winner) {
                 updateCurrentPlayer();
             }
@@ -164,7 +185,8 @@ const Gameplay = (function () {
     return {
         markSquare,
         startGame,
-        updateCurrentPlayer
+        updateCurrentPlayer,
+        playAgain
         }
 
 })();
@@ -214,6 +236,13 @@ const PageEffects = (function() {
         overlay.classList.remove('hide');
     }
 
+    function hidePlayerForm() {
+        const playerForm = document.querySelector('.form-window');
+        playerForm.classList.add('hide');
+        const overlay = document.querySelector('.overlay');
+        overlay.classList.add('hide');
+    }
+
     function showAlert() {
         const alert = document.querySelector('.alert');
         alert.classList.remove('hide');
@@ -222,7 +251,7 @@ const PageEffects = (function() {
         const closeAlert = document.querySelector('.alert-close-button');
         closeAlert.addEventListener('click', () => {
             hideAlert();
-        });
+        }, {once : true});
     }
 
     function hideAlert() {
@@ -232,11 +261,28 @@ const PageEffects = (function() {
         alertOverlay.classList.add('hide');
     }
 
-    function hidePlayerForm() {
-        const playerForm = document.querySelector('.form-window');
-        playerForm.classList.add('hide');
-        const overlay = document.querySelector('.overlay');
-        overlay.classList.add('hide');
+    function showWinner(winnerName) {
+        const winnerCloseButton = document.querySelector('.winner-close-button');
+        winnerCloseButton.addEventListener('click', () => {
+            window.location.replace('https://www.wikihow.com/Play-Human-Tic-Tac-Toe');
+        });
+        const playAgainButton = document.querySelector('.play-again-button');
+        playAgainButton.addEventListener('click', () => {
+            Gameplay.playAgain();
+        }, {once : true});
+        const winnerWindow = document.querySelector('.winner');
+        winnerWindow.classList.remove('hide');
+        const winnerOverlay = document.querySelector('.winner-overlay');
+        winnerOverlay.classList.remove('hide');
+        const winningPlayer = document.querySelector('.winning-player');
+        winningPlayer.innerText = winnerName;
+    }
+
+    function hideWinner() {
+        const winnerWindow = document.querySelector('.winner');
+        winnerWindow.classList.add('hide');
+        const winnerOverlay = document.querySelector('.winner-overlay');
+        winnerOverlay.classList.add('hide');
     }
 
     function hideStartDiv() {
@@ -400,7 +446,9 @@ const PageEffects = (function() {
         setBodyHeight,
         addWindowResizeListener,
         showAlert,
-        hideAlert
+        hideAlert,
+        showWinner,
+        hideWinner
     }
     
 })();

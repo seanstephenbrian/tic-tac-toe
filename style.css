@@ -94,6 +94,14 @@ body {
         text-shadow: 1px 1px red;
     }
 
+    .play-again-button:hover {
+        font-style: italic;
+        border: 2px solid var(--green);
+        background: rgba(0, 0, 0, 0.712);
+        color: #FFFF9E;
+        text-shadow: 1px 1px red;
+    }
+
     .square {
         transition: .2s;
     }
@@ -205,6 +213,59 @@ footer {
 
 .alert-overlay {
     z-index: 19;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(8px);
+}
+
+.winner {
+    z-index: 30;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: calc(200px + var(--rvv));
+    width: calc(300px + 1.5*var(--rvv));
+    border: 2px solid #14c500;
+    border-radius: 15px;
+    box-shadow: 0 0 calc(var(--rvv)) var(--pink);
+    background: #aeffa5;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: calc(0.3*var(--rvv));
+    text-align: center;
+}
+
+.winning-player {
+    margin-right: calc(0.1*var(--rvv));
+    font-family: 'Helico';
+    font-size: calc(1*var(--rvv));
+    font-style: italic;
+    color: var(--pink);
+    text-shadow: 3px 3px var(--green);
+}
+
+.play-again-button {
+    width: calc(4*var(--rvv));
+    font-family: 'Helico';
+    color: white;
+    background: rgb(32,194,14);
+    background: linear-gradient(90deg, rgba(255,0,0,1) 22%, rgba(255,66,211,1) 49%, rgba(32,194,14,1) 82%);
+    border-radius: calc(var(--rvv));
+    padding: calc(0.3*var(--rvv)) calc(0.1*var(--rvv)) calc(0.2*var(--rvv));
+    border: 1px solid red;
+    cursor: pointer;
+    font-size: calc(.6*var(--rvv));
+}
+
+.winner-overlay {
+    z-index: 29;
     width: 100%;
     height: 100%;
     position: fixed;
