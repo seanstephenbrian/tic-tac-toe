@@ -25,7 +25,7 @@ time, mark, audio, video {
     --pink: rgb(255, 66, 211);
     --angel-mode: brightness(5);
     --form-margin: calc(.5*var(--rvv));
-    --form-height: calc(100px + 6*var(--rvv));
+    --form-height: calc(100px + 7.5*var(--rvv));
 }
 
 @font-face {
@@ -88,7 +88,7 @@ body {
     
     .form-window button:hover {
         font-style: italic;
-        border: 2px solid red;
+        border: 2px solid var(--green);
         background: rgba(0, 0, 0, 0.712);
         color: #FFFF9E;
         text-shadow: 1px 1px red;
@@ -174,6 +174,7 @@ footer {
 }
 
 .form-window {
+    font-size: calc(0.3*var(--rvv));
     position: fixed;
     top: 50%;
     left: 50%;
@@ -181,15 +182,16 @@ footer {
     height: var(--form-height);
     width: var(--form-height);
     z-index: 10;
-    background: black;
-    color: var(--green);
-    border: 3px solid var(--green)
+    background: rgba(255, 255, 255, 0.656);
+    backdrop-filter: blur(5px);
+    border: 3px solid #20c20e88;
+    border-radius: calc(.5*var(--rvv));
 }
 
 .close-button {
     position: absolute;
-    right: calc(.4*var(--rvv));
-    top: calc(.4*var(--rvv));
+    right: calc(.2*var(--rvv));
+    top: calc(.2*var(--rvv));
     font-size: 140%;
     border: 1px solid black;
     padding: calc(.1*var(--rvv));
@@ -212,7 +214,7 @@ legend {
 }
 
 .player-one-field {
-    margin-top: var(--form-margin);
+    margin-top: calc(2.2*var(--form-margin));
 }
 
 .player-one-field,
@@ -222,28 +224,65 @@ fieldset,
     margin-right: var(--form-margin);
 }
 
+.player-two-field {
+    margin-bottom: calc(-0.4*var(--form-margin));
+}
+
+.player-one-field,
+.player-two-field {
+    display: grid;
+    grid-template:
+        "name-label name-input" 1fr
+        "symbol-label symbol-input" 1fr
+        / 1fr 1fr;
+    row-gap: calc(0.2*var(--rvv));
+}
+
+form div label:nth-of-type(1) {
+    grid-area: name-label;
+    display: flex;
+    align-items: center;
+}
+
+form div label:nth-of-type(2) {
+    grid-area: symbol-label;
+    display: flex;
+    align-items: center;
+}
+
+form div input:nth-of-type(1) {
+    grid-area: name-input;
+}
+
+form div input:nth-of-type(2) {
+    grid-area: symbol-input;
+}
+
+
 .play-button {
-    margin-bottom: var(--form-margin);
+    margin-bottom: calc(2*var(--form-margin));
 }
 
 .form-window input[type='text'] {
-    margin-top: calc(-1*var(--rvv));
+    height: calc(.7*var(--rvv));
     font-family: 'Courier New', Courier, monospace;
-    border: 1px solid red;
+    border: 2px solid red;
+    background-color: black;
+    color: var(--green);
 }
 
 .form-window button {
     align-self: center;
-    width: 50%;
+    width: calc(4*var(--rvv));
     font-family: 'Helico';
     color: white;
     background: rgb(32,194,14);
     background: linear-gradient(90deg, rgba(255,0,0,1) 22%, rgba(255,66,211,1) 49%, rgba(32,194,14,1) 82%);
     border-radius: calc(var(--rvv));
-    padding: calc(0.4*var(--rvv)) calc(0.3*var(--rvv)) calc(0.3*var(--rvv));
-    border: 1px solid var(--green);
+    padding: calc(0.3*var(--rvv)) calc(0.1*var(--rvv)) calc(0.2*var(--rvv));
+    border: 1px solid red;
     cursor: pointer;
-    font-size: calc(.5*var(--rvv));
+    font-size: calc(.4*var(--rvv));
 }
 
 .overlay {

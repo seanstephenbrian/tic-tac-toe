@@ -107,8 +107,10 @@ const Gameplay = (function () {
         currentPlayer = playerOne.marker;
         const currentPlayerName = playerOne.name;
 
-        document.body.classList.remove(`init-bg`);
-        document.body.classList.add(`${currentPlayer}-bg`);
+        if (currentPlayer) {
+            document.body.classList.remove(`init-bg`);
+            document.body.classList.add(`${currentPlayer}-bg`);
+        }
 
         if (currentPlayerName) {
             const header = document.querySelector('header');
