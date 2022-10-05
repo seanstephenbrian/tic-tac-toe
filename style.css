@@ -190,7 +190,11 @@ footer {
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: calc(0.7*var(--rvv));
+}
+
+.alert-text {
+    font-size: calc(0.6*var(--rvv));
+    margin: 0 calc(var(--rvv));
 }
 
 .alert .close-button {

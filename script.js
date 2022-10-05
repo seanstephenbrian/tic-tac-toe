@@ -262,18 +262,13 @@ const PageEffects = (function() {
             } else if (playerTwoMarkerInput === 'O' || playerTwoMarkerInput === 'o') {
                 playerTwoMarker = 'o';
             }
-            if (playerOneMarker === playerTwoMarker) {
-                if (playerTwoMarker === 'x') {
-                    const playerTwoMarkerInputField = document.querySelector('#player-two-marker');
-                    playerTwoMarkerInputField.value = 'o';
-                    clickedPlay(e);
-                } else if (playerTwoMarker === 'o') {
-                    const playerTwoMarkerInputField = document.querySelector('#player-two-marker');
-                    playerTwoMarkerInputField.value = 'x';
-                    clickedPlay(e);
-                }
+            const computerOption = document.querySelector('#computer');
+            if (!computerOption.checked && (playerOneMarker === playerTwoMarker)) {
+                PageEffects.showAlert();
+                const alertText = document.querySelector('.alert-text');
+                alertText.innerText = 'players must choose different symbols!';
             }
-            if (playerOneMarker !== playerTwoMarker) {
+            if ((playerOneMarker !== playerTwoMarker) || (playerOneMarker && computerOption.checked)) {
                 clickedPlay(e);
             }
         });
