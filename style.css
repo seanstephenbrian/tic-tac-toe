@@ -307,8 +307,14 @@ form div input:nth-of-type(2) {
     height: calc(.7*var(--rvv));
     font-family: 'Courier New', Courier, monospace;
     border: 2px solid red;
-    background-color: black;
+    border-radius: calc(0.4*var(--rvv));
+    padding-left: calc(0.3*var(--rvv));
+    background-color: rgba(0, 0, 0, 0.599);
     color: var(--green);
+}
+
+.form-window input[type='text']:valid {
+    border: 2px solid var(--green);
 }
 
 .form-window button {

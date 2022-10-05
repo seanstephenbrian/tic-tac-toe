@@ -252,25 +252,62 @@ const PageEffects = (function() {
             let playerOneMarker;
             if (playerOneMarkerInput === 'X' || playerOneMarkerInput === 'x') {
                 playerOneMarker = 'x';
-            } else if (playerOneMarkerInput === 'O' || playerOneMarkerInput === 'o') {
+            } else if (playerOneMarkerInput === 'O' || playerOneMarkerInput === 'o' || playerOneMarkerInput === '0') {
                 playerOneMarker = 'o';
             }
             let playerTwoMarkerInput = document.querySelector('#player-two-marker').value;
             let playerTwoMarker;
             if (playerTwoMarkerInput === 'X' || playerTwoMarkerInput === 'x') {
                 playerTwoMarker = 'x';
-            } else if (playerTwoMarkerInput === 'O' || playerTwoMarkerInput === 'o') {
+            } else if (playerTwoMarkerInput === 'O' || playerTwoMarkerInput === 'o' || playerTwoMarkerInput === '0') {
                 playerTwoMarker = 'o';
             }
             const computerOption = document.querySelector('#computer');
             if (!computerOption.checked && (playerOneMarker === playerTwoMarker)) {
-                PageEffects.showAlert();
+                showAlert();
                 const alertText = document.querySelector('.alert-text');
                 alertText.innerText = 'players must choose different symbols!';
             }
             if ((playerOneMarker !== playerTwoMarker) || (playerOneMarker && computerOption.checked)) {
                 clickedPlay(e);
             }
+        });
+        const playerMarkerInputs = document.querySelectorAll('.player-marker-input');
+        playerMarkerInputs.forEach(input => {
+            input.addEventListener('focusout', () => {
+
+                // same code originally written for form submit event listener; it checks if both symbol inputs are the same; if they are, it shows an alert asking the players to pick different symbols
+                let playerOneMarkerInput = document.querySelector('#player-one-marker').value;
+                let playerOneMarker;
+                if (playerOneMarkerInput === 'X' || playerOneMarkerInput === 'x') {
+                    playerOneMarker = 'x';
+                } else if (playerOneMarkerInput === 'O' || playerOneMarkerInput === 'o' || playerOneMarkerInput === '0') {
+                    playerOneMarker = 'o';
+                }
+                let playerTwoMarkerInput = document.querySelector('#player-two-marker').value;
+                let playerTwoMarker;
+                if (playerTwoMarkerInput === 'X' || playerTwoMarkerInput === 'x') {
+                    playerTwoMarker = 'x';
+                } else if (playerTwoMarkerInput === 'O' || playerTwoMarkerInput === 'o' || playerTwoMarkerInput === '0') {
+                    playerTwoMarker = 'o';
+                }
+                const computerOption = document.querySelector('#computer');
+                if (!computerOption.checked && (playerOneMarker === playerTwoMarker)) {
+                    showAlert();
+                    const alertText = document.querySelector('.alert-text');
+                    alertText.innerText = 'players must choose different symbols!';
+                    input.value = null;
+                    return;
+                }
+
+                if (!(input.value === 'x' || input.value === 'X' || input.value === 'o' || input.value === 'O' || input.value === '0')) {
+                    showAlert();
+                    const alertText = document.querySelector('.alert-text');
+                    alertText.innerText = 'please choose X or O!';
+                    input.value = null;
+                }
+
+            })
         });
         const radioInputs = document.querySelectorAll(`input[type='radio']`);
         radioInputs.forEach(option => {
@@ -306,7 +343,7 @@ const PageEffects = (function() {
         let playerOneMarker;
         if (playerOneMarkerInput === 'X' || playerOneMarkerInput === 'x') {
             playerOneMarker = 'x';
-        } else if (playerOneMarkerInput === 'O' || playerOneMarkerInput === 'o') {
+        } else if (playerOneMarkerInput === 'O' || playerOneMarkerInput === 'o' || playerOneMarkerInput === '0') {
             playerOneMarker = 'o';
         }
         const computerOption = document.querySelector('#computer');
@@ -325,7 +362,7 @@ const PageEffects = (function() {
             let playerTwoMarker;
             if (playerTwoMarkerInput === 'X' || playerTwoMarkerInput === 'x') {
                 playerTwoMarker = 'x';
-            } else if (playerTwoMarkerInput === 'O' || playerTwoMarkerInput === 'o') {
+            } else if (playerTwoMarkerInput === 'O' || playerTwoMarkerInput === 'o' || playerTwoMarkerInput === '0') {
                 playerTwoMarker = 'o';
             }
             Gameplay.startGame(playerOne, playerOneMarker, playerTwo, playerTwoMarker);
