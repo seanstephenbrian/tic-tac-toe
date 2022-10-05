@@ -294,11 +294,17 @@ const PageEffects = (function() {
     function setBodyHeight() {
         const windowHeight = window.innerHeight + "px";
         document.body.style.minHeight = windowHeight;
+        document.body.style.maxHeight = windowHeight;
       }
     
     function addWindowResizeListener() {
         addEventListener('resize', () => {
-            setBodyHeight();
+            if (window.innerHeight < 751) {
+                setBodyHeight();
+            } else if (window.innerHeight >= 751) {
+                document.body.style.minHeight = '100vh';
+                document.body.style.maxHeight = null;
+            }
           });
     }
       

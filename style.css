@@ -132,8 +132,17 @@ body {
 header {
     cursor: pointer;
     margin-top: calc(.4*var(--rvv));
-    margin-bottom: auto;
+    /* margin-bottom: auto; */
     font-size: calc(.8*var(--rvv));
+    display: flex;
+    justify-content: center;
+}
+
+header,
+footer {
+    width: 100%;
+    max-height: calc(var(--rvv));
+
 }
 
 .click-to-start {
@@ -325,7 +334,9 @@ fieldset,
 }
 
 footer {
+    display: flex;
+    justify-content: center;
     font-size: calc(.3*var(--rvv));
-    margin-top: auto;
+    /* margin-top: auto; */
     margin-bottom: calc(.1*var(--rvv));
 }
