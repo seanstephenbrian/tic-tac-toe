@@ -66,6 +66,16 @@ const Gameboard = (function () {
         } else if ((currentBoard.a3) && (currentBoard.a3 === currentBoard.b2) && (currentBoard.b2 === currentBoard.c1)) {
             return currentBoard.a3;
         } 
+        let squares = document.querySelectorAll('.square');
+        let i = 0;
+        squares.forEach(square => {
+            if (square.innerText) {
+                i++;
+            }
+        });
+        if (i === 9) {
+            alert('worked');
+        }
     }
 
     return {
@@ -121,15 +131,31 @@ const Gameplay = (function () {
     }
 
     function playAgain() {
+
+        let winningPlayer = currentPlayer;
+
         PageEffects.hideWinner();
 
-        if (currentPlayer === playerOne.marker) {
-            currentPlayer = playerTwo.marker;
-            currentPlayerName = playerTwo.name;
-        } else if (currentPlayer === playerTwo.marker) {
-            currentPlayer = playerOne.marker;
-            currentPlayerName = playerOne.name;
+        Gameboard.emptyBoard();
+
+        round = 1;
+
+        if (winningPlayer === playerOne.marker) {
+            
+            let playerOneName = playerOne.name;
+            let playerOneMarker = playerOne.marker;
+            let playerTwoName = playerTwo.name;
+            let playerTwoMarker = playerTwo.marker;
+
+            playerOne.name = playerTwoName;
+            playerOne.marker = playerTwoMarker;
+            playerTwo.name = playerOneName;
+            playerTwo.marker = playerOneMarker;
+
         }
+
+        currentPlayer = playerOne.marker;
+        currentPlayerName = playerOne.name;
 
         document.body.classList.remove(`x-bg`);
         document.body.classList.remove(`o-bg`);
@@ -138,9 +164,6 @@ const Gameplay = (function () {
         const header = document.querySelector('header');
         header.innerText = `${currentPlayerName}'s turn`;
 
-        Gameboard.emptyBoard();
-
-        round = 1;
     }
 
     function updateCurrentPlayer() {
