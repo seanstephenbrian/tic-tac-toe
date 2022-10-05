@@ -74,7 +74,7 @@ const Gameboard = (function () {
             }
         });
         if (i === 9) {
-            alert('worked');
+            PageEffects.showTieAlert();
         }
     }
 
@@ -141,7 +141,7 @@ const Gameplay = (function () {
         round = 1;
 
         if (winningPlayer === playerOne.marker) {
-            
+
             let playerOneName = playerOne.name;
             let playerOneMarker = playerOne.marker;
             let playerTwoName = playerTwo.name;
@@ -284,15 +284,38 @@ const PageEffects = (function() {
         alertOverlay.classList.add('hide');
     }
 
+    function showTieAlert() {
+        const tieCloseButton = document.querySelector('.tie-close-button');
+        tieCloseButton.addEventListener('click', () => {
+            window.location.href = 'https://www.wikihow.com/Win-at-Everything';
+        });
+        const tiePlayAgainButton = document.querySelector('.tie-play-again-button');
+        tiePlayAgainButton.addEventListener('click', () => {
+            hideTieAlert();
+            Gameplay.playAgain();
+        });
+        const tieAlert = document.querySelector('.tie');
+        tieAlert.classList.remove('hide');
+        const winnerOverlay = document.querySelector('.winner-overlay');
+        winnerOverlay.classList.remove('hide');
+    }
+
+    function hideTieAlert() {
+        const tieAlert = document.querySelector('.tie');
+        tieAlert.classList.add('hide');
+        const winnerOverlay = document.querySelector('.winner-overlay');
+        winnerOverlay.classList.remove('hide');
+    }
+
     function showWinner(winnerName) {
         const winnerCloseButton = document.querySelector('.winner-close-button');
         winnerCloseButton.addEventListener('click', () => {
-            window.location.replace('https://www.wikihow.com/Play-Human-Tic-Tac-Toe');
+            window.location.href = 'https://www.wikihow.com/Play-Human-Tic-Tac-Toe';
         });
-        const playAgainButton = document.querySelector('.play-again-button');
-        playAgainButton.addEventListener('click', () => {
+        const winnerPlayAgainButton = document.querySelector('.winner-play-again-button');
+        winnerPlayAgainButton.addEventListener('click', () => {
             Gameplay.playAgain();
-        }, {once : true});
+        });
         const winnerWindow = document.querySelector('.winner');
         winnerWindow.classList.remove('hide');
         const winnerOverlay = document.querySelector('.winner-overlay');
@@ -471,7 +494,9 @@ const PageEffects = (function() {
         showAlert,
         hideAlert,
         showWinner,
-        hideWinner
+        hideWinner,
+        showTieAlert,
+        hideTieAlert
     }
     
 })();

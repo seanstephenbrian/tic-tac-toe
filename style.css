@@ -221,6 +221,27 @@ footer {
     backdrop-filter: blur(8px);
 }
 
+.tie {
+    z-index: 30;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: calc(200px + var(--rvv));
+    width: calc(300px + 1.5*var(--rvv));
+    border: 2px solid rgb(255, 66, 211);
+    border-radius: 15px;
+    box-shadow: 0 0 calc(var(--rvv)) var(--green);
+    background: rgb(255, 209, 244);
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: calc(0.6*var(--rvv));
+    text-align: center;
+}
+
 .winner {
     z-index: 30;
     position: fixed;
