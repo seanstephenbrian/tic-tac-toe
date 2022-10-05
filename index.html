@@ -21,7 +21,7 @@
                 <label class="player-label" for="player-one">player one name:</label>
                 <input type="text" id="player-one" name="player-one" maxlength="16" placeholder="e.g. shane" required>
                 <label class="player-label" for="player-one-marker">player one symbol:</label>
-                <input type="text" id="player-one-marker" name="player-one-marker" maxlength="1" placeholder="x or o?" required>
+                <input type="text" id="player-one-marker" name="player-one-marker" maxlength="1" placeholder="x or o?" pattern="[x,X,o,O]{1}" required>
             </div>
             <fieldset>
                 <legend>player two:</legend>
@@ -34,13 +34,20 @@
                 <label class="player-label" for="player-two" class="player-two-input">player two name:</label>
                 <input type="text" class="player-two-input" id="player-two" name="player-two" maxlength="16" placeholder="e.g. hans" required>
                 <label class="player-label" for="player-two-marker">player two symbol:</label>
-                <input type="text" id="player-two-marker" name="player-two-marker" maxlength="1" placeholder="x or o?" required>
+                <input type="text" id="player-two-marker" name="player-two-marker" maxlength="1" placeholder="x or o?" pattern="[x,X,o,O]{1}" required>
             </div>
             <button class="play-button" type="submit" form="player-form">play game</button>
         </form>
     </div>
 
     <div class="overlay hide"></div>
+
+    <div class="alert hide">
+        <div class="alert-close-button close-button">X</div>
+        <div class="alert-text">test</div>
+    </div>
+
+    <div class="alert-overlay hide"></div>
 
     <div class="gameboard">
         <div class="square a1"></div>

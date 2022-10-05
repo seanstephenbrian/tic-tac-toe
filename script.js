@@ -214,6 +214,24 @@ const PageEffects = (function() {
         overlay.classList.remove('hide');
     }
 
+    function showAlert() {
+        const alert = document.querySelector('.alert');
+        alert.classList.remove('hide');
+        const alertOverlay = document.querySelector('.alert-overlay');
+        alertOverlay.classList.remove('hide');
+        const closeAlert = document.querySelector('.alert-close-button');
+        closeAlert.addEventListener('click', () => {
+            hideAlert();
+        });
+    }
+
+    function hideAlert() {
+        const alert = document.querySelector('.alert');
+        alert.classList.add('hide');
+        const alertOverlay = document.querySelector('.alert-overlay');
+        alertOverlay.classList.add('hide');
+    }
+
     function hidePlayerForm() {
         const playerForm = document.querySelector('.form-window');
         playerForm.classList.add('hide');
@@ -230,7 +248,34 @@ const PageEffects = (function() {
         const playerForm = document.querySelector('#player-form');
         playerForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            clickedPlay(e);
+            let playerOneMarkerInput = document.querySelector('#player-one-marker').value;
+            let playerOneMarker;
+            if (playerOneMarkerInput === 'X' || playerOneMarkerInput === 'x') {
+                playerOneMarker = 'x';
+            } else if (playerOneMarkerInput === 'O' || playerOneMarkerInput === 'o') {
+                playerOneMarker = 'o';
+            }
+            let playerTwoMarkerInput = document.querySelector('#player-two-marker').value;
+            let playerTwoMarker;
+            if (playerTwoMarkerInput === 'X' || playerTwoMarkerInput === 'x') {
+                playerTwoMarker = 'x';
+            } else if (playerTwoMarkerInput === 'O' || playerTwoMarkerInput === 'o') {
+                playerTwoMarker = 'o';
+            }
+            if (playerOneMarker === playerTwoMarker) {
+                if (playerTwoMarker === 'x') {
+                    const playerTwoMarkerInputField = document.querySelector('#player-two-marker');
+                    playerTwoMarkerInputField.value = 'o';
+                    clickedPlay(e);
+                } else if (playerTwoMarker === 'o') {
+                    const playerTwoMarkerInputField = document.querySelector('#player-two-marker');
+                    playerTwoMarkerInputField.value = 'x';
+                    clickedPlay(e);
+                }
+            }
+            if (playerOneMarker !== playerTwoMarker) {
+                clickedPlay(e);
+            }
         });
         const radioInputs = document.querySelectorAll(`input[type='radio']`);
         radioInputs.forEach(option => {
@@ -321,7 +366,9 @@ const PageEffects = (function() {
         hideStartDiv,
         addFormListeners,
         setBodyHeight,
-        addWindowResizeListener
+        addWindowResizeListener,
+        showAlert,
+        hideAlert
     }
     
 })();
