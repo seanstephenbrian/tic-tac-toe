@@ -72,7 +72,7 @@ body {
         text-shadow: 3px 3px var(--green);
     }
 
-    .clickable:hover {
+    .click-to-start-text:hover {
         font-style: italic;
         border: 2px solid var(--green);
         background: rgba(0, 0, 0, 0.932);
@@ -168,7 +168,7 @@ footer {
     text-align: center;
 }
 
-.clickable {
+.click-to-start-text {
     font-family: 'Helico';
     width: calc(4*var(--rvv));
     color: white;
