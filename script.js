@@ -3,6 +3,7 @@
     // Gameboard module:
     const Gameboard = (function () {
 
+        // initialize empty gameboard object:
         let currentBoard = {
             a1: '',
             a2: '',
@@ -44,7 +45,7 @@
             renderBoard();
         }
 
-        // add listeners for clicks on the game squares; a click on any square will trigger the markSquare function
+        // add listeners for clicks on the game squares; a click on any square will trigger the markSquare function:
         (function() {
             let squares = document.querySelectorAll('.square');
             squares.forEach(square => {
@@ -54,7 +55,7 @@
             });
         })();
 
-        // check for winner by looking for three-in-a-row sequences of the same symbol on the gameboard; if there is one, return the winning symbol
+        // check for winner by looking for three-in-a-row sequences of the same symbol on the gameboard; if there is one, return the winning symbol:
         function checkForWinner() {
 
             if ((currentBoard.a1) && (currentBoard.a1 === currentBoard.a2) && (currentBoard.a2 === currentBoard.a3)) {
@@ -111,7 +112,7 @@
         let currentPlayerName = '';
         let round;
 
-        // start the game by emptying the board & setting the round number to 1
+        // start the game by emptying the board & setting the round number to 1:
         function startGame(playerOneName, playerOneMarker, playerTwoName, playerTwoMarker) {
             Gameboard.emptyBoard();
 
@@ -124,17 +125,17 @@
             playerTwo.name = playerTwoName;
             playerTwo.marker = playerTwoMarker;
 
-            // make playerOne the currentPlayer
+            // make playerOne the currentPlayer:
             currentPlayer = playerOne.marker;
             currentPlayerName = playerOne.name;
 
-            // double-check that there is a currentPlayer, and if so change the background image to that player's symbol
+            // double-check that there is a currentPlayer, and if so change the background image to that player's symbol:
             if (currentPlayer) {
                 document.body.classList.remove(`init-bg`);
                 document.body.classList.add(`${currentPlayer}-bg`);
             }
 
-            // set the header text to the current player's name
+            // set the header text to the current player's name:
             if (currentPlayerName) {
                 const header = document.querySelector('header');
                 header.innerText = `${currentPlayerName}'s turn`;
@@ -170,16 +171,16 @@
 
             }
 
-            // make sure currentPlayer is set to playerOne
+            // make sure currentPlayer is set to playerOne:
             currentPlayer = playerOne.marker;
             currentPlayerName = playerOne.name;
 
-            // update the background image with the current player's symbol
+            // update the background image with the current player's symbol:
             document.body.classList.remove(`x-bg`);
             document.body.classList.remove(`o-bg`);
             document.body.classList.add(`${currentPlayer}-bg`);
 
-            // update header with current player's name
+            // update header with current player's name:
             const header = document.querySelector('header');
             header.innerText = `${currentPlayerName}'s turn`;
 
@@ -187,14 +188,15 @@
 
         function updateCurrentPlayer() {
 
-            // if the players haven't yet chosen symbols, set the background to a default initial background (an X)
+            // if the players haven't yet chosen symbols, set the background to a default initial background (an X):
             if (playerOne.marker === undefined || playerTwo.marker === undefined) {
                 document.body.classList.remove(`x-bg`);
                 document.body.classList.remove(`o-bg`);
                 document.body.classList.add(`init-bg`);
+
             // if the game has started, increment the round,  
             // change the currentPlayer (knowing that playerOne is the currentPlayer for odd rounds and playerTwo is the currentPlayer for even rounds),
-            // and update the background & header with the currentPlayer's symbol & name
+            // and update the background & header with the currentPlayer's symbol & name:
             } else if (playerOne.marker || playerTwo.marker) {
                 document.body.classList.remove(`x-bg`);
                 document.body.classList.remove(`o-bg`);
@@ -217,11 +219,13 @@
         function markSquare(e) {
 
             const clickedSquare = e.target;
-            // if the square is already filled, exit the function
+
+            // if the square is already filled, exit the function:
             checkSquare: if (clickedSquare.innerText) {
                 break checkSquare;
+
             // if the square is empty, update the currentBoard object by setting the clicked square's value to the currentPlayer's symbol,
-            // then check for a winner; if there is a winner, display the winner message; if there isn't, proceed with gameplay by updating the current player.
+            // then check for a winner; if there is a winner, display the winner message; if there isn't, proceed with gameplay by updating the current player:
             } else if (!clickedSquare.innerText) {
                 const squareId = clickedSquare.dataset.id;
                 Gameboard.updateBoard(squareId, currentPlayer);
@@ -266,7 +270,7 @@
             });
         })();
 
-        // if it's not a mobile viewport, rotate the square a random number of degrees when hovered over:
+        // if it's not a mobile viewport, rotate the square a random number of degrees when mouse over:
         function rotateSquare(e) {
             if (window.innerWidth >= 751) {
                 const square = e.target;
