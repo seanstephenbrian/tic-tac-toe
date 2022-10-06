@@ -298,7 +298,7 @@
             updateCurrentPlayer,
             playAgain,
             makeComputerMove
-            }
+        };
     })();
 
     //  module for dynamic page effects:
@@ -616,6 +616,6 @@
             hideTieAlert,
             enableClickBarrier,
             disableClickBarrier
-        }
+        };
     })();
 })();
