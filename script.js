@@ -406,7 +406,7 @@
                         playerTwoMarker = 'o';
                     }
                     const computerOption = document.querySelector('#computer');
-                    if (!computerOption.checked && (playerOneMarker === playerTwoMarker)) {
+                    if (!computerOption.checked  && (playerOneMarker !== undefined) && (playerTwoMarker !== undefined) && (playerOneMarker === playerTwoMarker)) {
                         showAlert();
                         const alertText = document.querySelector('.alert-text');
                         alertText.innerText = 'players must choose different symbols!';
@@ -414,7 +414,7 @@
                         return;
                     }
 
-                    if (!(input.value === 'x' || input.value === 'X' || input.value === 'o' || input.value === 'O' || input.value === '0')) {
+                    if (!(input.value === '' || input.value === 'x' || input.value === 'X' || input.value === 'o' || input.value === 'O' || input.value === '0')) {
                         showAlert();
                         const alertText = document.querySelector('.alert-text');
                         alertText.innerText = 'please choose X or O!';
