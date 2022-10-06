@@ -89,11 +89,17 @@
             }
         }
 
+        // return currentBoard object for use in the AI function:
+        function returnCurrentBoard() {
+            return currentBoard;
+        }
+
         return {
             updateBoard,
             renderBoard,
             emptyBoard,
-            checkForWinner
+            checkForWinner,
+            returnCurrentBoard
         };
     })();
 
@@ -111,6 +117,7 @@
         let currentPlayer = '';
         let currentPlayerName = '';
         let round;
+        let difficulty = 'easy';
 
         // start the game by emptying the board & setting the round number to 1:
         function startGame(playerOneName, playerOneMarker, playerTwoName, playerTwoMarker) {
@@ -184,6 +191,12 @@
             const header = document.querySelector('header');
             header.innerText = `${currentPlayerName}'s turn`;
 
+            if (currentPlayerName === 'computer') {
+                PageEffects.enableClickBarrier();
+                setTimeout(PageEffects.disableClickBarrier, 500);
+                setTimeout(makeComputerMove, 500);
+            }
+
         }
 
         function updateCurrentPlayer() {
@@ -212,6 +225,13 @@
                 const header = document.querySelector('header');
                 header.innerText = `${currentPlayerName}'s turn`;
             }
+
+            if (currentPlayerName === 'computer') {
+                PageEffects.enableClickBarrier();
+                setTimeout(PageEffects.disableClickBarrier, 500);
+                setTimeout(makeComputerMove, 500);
+            }
+
         }
 
         updateCurrentPlayer();
@@ -238,11 +258,46 @@
             }
         }
 
+        // determine the computer's move for easy / hard difficulty settings:
+        function makeComputerMove() {
+
+            let choice;
+
+            let emptySquares = [];
+
+            let currentBoard = Gameboard.returnCurrentBoard();
+
+            for (square in currentBoard) {
+                if (!currentBoard[square]) {
+                    emptySquares.push(square);
+                }
+            }
+
+            // if the difficulty is 'easy', have the computer make a random move:
+            if (difficulty === 'easy') {
+                const randomIndex = Math.floor(Math.random() * emptySquares.length);
+                choice = emptySquares[randomIndex];
+            }
+
+            // update board with the computer's choice and check for winner; if there's no winner, update the current player:
+            Gameboard.updateBoard(choice, currentPlayer);
+            const winner = Gameboard.checkForWinner();
+            if (winner) {
+                PageEffects.showWinner(currentPlayerName);
+            } else if (!winner) {
+                updateCurrentPlayer();
+            }
+
+            // clear currentBoard object before computer's next turn:
+            currentBoard = {};
+        }
+
         return {
             markSquare,
             startGame,
             updateCurrentPlayer,
-            playAgain
+            playAgain,
+            makeComputerMove
             }
     })();
 
@@ -350,6 +405,16 @@
             startDiv.classList.add('hide');
         }
 
+        function enableClickBarrier() {
+            const clickBarrier = document.querySelector('.click-barrier');
+            clickBarrier.classList.remove('hide');
+        }
+
+        function disableClickBarrier() {
+            const clickBarrier = document.querySelector('.click-barrier');
+            clickBarrier.classList.add('hide');
+        }
+
         // this function adds all the events listeners to the player form:
         (function() {
             const playerForm = document.querySelector('#player-form');
@@ -420,7 +485,6 @@
                         alertText.innerText = 'please choose X or O!';
                         input.value = null;
                     }
-
                 })
             });
 
@@ -550,6 +614,8 @@
             hideWinner,
             showTieAlert,
             hideTieAlert,
+            enableClickBarrier,
+            disableClickBarrier
         }
     })();
 })();
