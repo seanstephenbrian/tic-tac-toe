@@ -26,3 +26,23 @@ is simpler, i still think it looks quite interesting!
 
 in the end, this was a really rewarding and engaging project. i enjoyed both the more logical
 / mathematical side of it and, of course, the design work.
+
+![Screenshot 1](https://raw.githubusercontent.com/seanstephenbrian/tic-tac-toe/main/img/screenshots/screenshot-1.png)
+
+![Screenshot 2](https://raw.githubusercontent.com/seanstephenbrian/tic-tac-toe/main/img/screenshots/screenshot-2.png)
+
+![Screenshot 3](https://raw.githubusercontent.com/seanstephenbrian/tic-tac-toe/main/img/screenshots/screenshot-3.png)
+
+![Screenshot 4](https://raw.githubusercontent.com/seanstephenbrian/tic-tac-toe/main/img/screenshots/screenshot-4.png)
+
+![Screenshot 5](https://raw.githubusercontent.com/seanstephenbrian/tic-tac-toe/main/img/screenshots/screenshot-5.png)
+
+![Screenshot 6](https://raw.githubusercontent.com/seanstephenbrian/tic-tac-toe/main/img/screenshots/screenshot-6.png)
+
+![Mobile screenshot 1](https://raw.githubusercontent.com/seanstephenbrian/tic-tac-toe/main/img/screenshots/mobile-1.png)
+
+![Mobile screenshot 2](https://raw.githubusercontent.com/seanstephenbrian/tic-tac-toe/main/img/screenshots/mobile-2.png)
+
+![Mobile screenshot 3](https://raw.githubusercontent.com/seanstephenbrian/tic-tac-toe/main/img/screenshots/mobile-3.png)
+
+![Mobile screenshot 4](https://raw.githubusercontent.com/seanstephenbrian/tic-tac-toe/main/img/screenshots/mobile-4.png)
