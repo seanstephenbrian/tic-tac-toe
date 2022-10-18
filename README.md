@@ -27,6 +27,8 @@ is simpler, i still think it looks quite interesting!
 in the end, this was a really rewarding and engaging project. i enjoyed both the more logical
 / mathematical side of it and, of course, the design work.
 
+some screenshots of the desktop version:
+
 ![Screenshot 1](https://raw.githubusercontent.com/seanstephenbrian/tic-tac-toe/main/img/screenshots/screenshot-1.png)
 
 ![Screenshot 2](https://raw.githubusercontent.com/seanstephenbrian/tic-tac-toe/main/img/screenshots/screenshot-2.png)
@@ -38,6 +40,8 @@ in the end, this was a really rewarding and engaging project. i enjoyed both the
 ![Screenshot 5](https://raw.githubusercontent.com/seanstephenbrian/tic-tac-toe/main/img/screenshots/screenshot-5.png)
 
 ![Screenshot 6](https://raw.githubusercontent.com/seanstephenbrian/tic-tac-toe/main/img/screenshots/screenshot-6.png)
+
+mobile version:
 
 <img src="https://raw.githubusercontent.com/seanstephenbrian/tic-tac-toe/main/img/screenshots/mobile-1.png" alt="Mobile screenshot 1" width="400"/>
 
