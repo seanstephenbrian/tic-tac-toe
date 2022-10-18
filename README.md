@@ -39,10 +39,10 @@ in the end, this was a really rewarding and engaging project. i enjoyed both the
 
 ![Screenshot 6](https://raw.githubusercontent.com/seanstephenbrian/tic-tac-toe/main/img/screenshots/screenshot-6.png)
 
-<img src="https://raw.githubusercontent.com/seanstephenbrian/tic-tac-toe/main/img/screenshots/mobile-1.png" alt="Mobile screenshot 1" width="500"/>
+<img src="https://raw.githubusercontent.com/seanstephenbrian/tic-tac-toe/main/img/screenshots/mobile-1.png" alt="Mobile screenshot 1" width="400"/>
 
-<img src="https://raw.githubusercontent.com/seanstephenbrian/tic-tac-toe/main/img/screenshots/mobile-2.png" alt="Mobile screenshot 2" width="500"/>
+<img src="https://raw.githubusercontent.com/seanstephenbrian/tic-tac-toe/main/img/screenshots/mobile-2.png" alt="Mobile screenshot 2" width="400"/>
 
-<img src="https://raw.githubusercontent.com/seanstephenbrian/tic-tac-toe/main/img/screenshots/mobile-3.png" alt="Mobile screenshot 3" width="500"/>
+<img src="https://raw.githubusercontent.com/seanstephenbrian/tic-tac-toe/main/img/screenshots/mobile-3.png" alt="Mobile screenshot 3" width="400"/>
 
-<img src="https://raw.githubusercontent.com/seanstephenbrian/tic-tac-toe/main/img/screenshots/mobile-4.png" alt="Mobile screenshot 4" width="500"/>
+<img src="https://raw.githubusercontent.com/seanstephenbrian/tic-tac-toe/main/img/screenshots/mobile-4.png" alt="Mobile screenshot 4" width="400"/>
