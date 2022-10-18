@@ -19,13 +19,13 @@ once the logic was mostly in place, i focused on creating a complex and unexpect
 visual aesthetic for this simple game. building off the brutalist/minimalist design i had
 previously used in the calculator project, i used flashing X/O background graphics, multiple layers of backdrop filters, pop-up windows, and hover effects (including a JS function that rotates each
 tic-tac-toe square a random number of degrees between -180 and 180 degrees when you mouse over)
-to create what i hope is an original vision for a browser tic-tac-toe game.
+to create what i hope is a unique vision for a browser tic-tac-toe game.
 
-the design is pared down and simplified for mobile displays/narrow screen widths -- even though it
+the design is pared down for mobile displays/narrow screen widths -- even though it
 is simpler, i still think it looks quite interesting!
 
 in the end, this was a really rewarding and engaging project. i enjoyed both the more logical
-/ mathematical side of it and, of course, the design work.
+/ mathematical side of it and definitely had fun with the design work!
 
 some screenshots of the desktop version:
 
