@@ -4,7 +4,7 @@ a simple tic-tac-toe browser game with a not-so-simple interface
 
 live version: https://seanstephenbrian.github.io/tic-tac-toe/
 
-the idea behind the assignment was to create a fully functional tic-tac-toe game in 
+the idea behind the project was to create a fully functional tic-tac-toe game in 
 javascript with no global code. blocks of related javascript are held in isolated 'modules'
 (Gameboard, Gameplay, PageEffects...) each inside an anonymous function assigned to the module's
 variable. the modules contain various functions for starting, running, and ending the game,
