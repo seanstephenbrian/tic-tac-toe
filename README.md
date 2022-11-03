@@ -6,8 +6,8 @@ live version: https://seanstephenbrian.github.io/tic-tac-toe/
 
 the idea behind the project was to create a fully functional tic-tac-toe game in 
 javascript with no global code. blocks of related javascript are held in isolated 'modules'
-(Gameboard, Gameplay, PageEffects...) each inside an anonymous function assigned to the module's
-variable. the modules contain various functions for starting, running, and ending the game,
+(Gameboard, Gameplay, PageEffects...) each of which lives in an anonymous function assigned to
+a variable. the modules contain various functions for starting, running, and ending the game,
 and for dynamically updating the page as the user interacts with it.
 
 i enjoyed working through the logic of the game and solving specific problems -- for example,
